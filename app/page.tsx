@@ -250,7 +250,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-white text-white font-medium uppercase tracking-wider hover:bg-white hover:text-luxe-black transition-colors"
+              className="inline-flex items-center gap-3 px-8 py-4 border border-[#C9A050] text-[#C9A050] font-medium uppercase tracking-wider hover:bg-[#C9A050] hover:text-luxe-black transition-colors rounded-lg"
             >
               Our Story
               <ArrowRight className="w-5 h-5" />
