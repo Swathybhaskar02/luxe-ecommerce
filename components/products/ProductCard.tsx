@@ -65,6 +65,17 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       <Link href={`/products/${product.id}`}>
         {/* Image Container */}
         <div className="relative aspect-[3/4] bg-cream-dark overflow-hidden mb-4">
+          {/* Animated Border Drawing Effect */}
+          <span className="absolute inset-0 pointer-events-none">
+            {/* Top border */}
+            <span className="absolute top-0 left-0 h-[2px] w-0 bg-gold group-hover:w-full transition-all duration-300 ease-out" />
+            {/* Right border */}
+            <span className="absolute top-0 right-0 w-[2px] h-0 bg-gold group-hover:h-full transition-all duration-300 ease-out delay-150" />
+            {/* Bottom border */}
+            <span className="absolute bottom-0 right-0 h-[2px] w-0 bg-gold group-hover:w-full transition-all duration-300 ease-out delay-300" />
+            {/* Left border */}
+            <span className="absolute bottom-0 left-0 w-[2px] h-0 bg-gold group-hover:h-full transition-all duration-300 ease-out delay-[450ms]" />
+          </span>
           <Image
             src={product.image}
             alt={product.name}
