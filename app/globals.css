@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-luxe-black;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+
+  input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  .container {
+    @apply w-full max-w-[1400px] mx-auto px-4 md:px-8;
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif !important;
+  }
+
+  .btn-primary {
+    @apply bg-luxe-black text-luxe-white px-8 py-3.5 font-medium tracking-wider uppercase text-sm transition-all duration-300 inline-block;
+  }
+
+  .btn-primary:hover {
+    @apply bg-gold text-luxe-black;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-luxe-black px-8 py-3.5 font-medium tracking-wider uppercase text-sm border border-luxe-black transition-all duration-300 inline-block;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-luxe-black text-luxe-white;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-luxe-black px-8 py-3.5 font-medium tracking-wider uppercase text-sm transition-all duration-300 inline-block;
+  }
+
+  .btn-gold:hover {
+    @apply bg-gold-dark;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-dark;
+}
+
+::selection {
+  @apply bg-gold text-luxe-black;
+}
