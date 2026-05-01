@@ -138,12 +138,13 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="aspect-[4/5] relative">
+              <div className="relative">
                 <Image
-                  src="/images/banners/banner-1.png"
+                  src="/images/about-us.png"
                   alt="LUXE craftsmanship"
-                  fill
-                  className="object-cover"
+                  width={1890}
+                  height={3780}
+                  className="w-full h-auto object-contain"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 bg-gold p-8 hidden md:block">
