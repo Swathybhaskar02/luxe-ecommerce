@@ -69,7 +69,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
           />
 
           {/* Badges */}

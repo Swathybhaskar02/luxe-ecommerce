@@ -127,7 +127,7 @@ export default function ProductDetailPage({ params }: PageProps) {
                 src={product.images[selectedImage]}
                 alt={product.name}
                 fill
-                className="object-cover"
+                className="object-contain p-6"
                 priority
               />
               {discount > 0 && (
@@ -154,7 +154,7 @@ export default function ProductDetailPage({ params }: PageProps) {
                       src={img}
                       alt={`${product.name} ${index + 1}`}
                       fill
-                      className="object-cover"
+                      className="object-contain p-1"
                     />
                   </button>
                 ))}
