@@ -103,13 +103,19 @@ export default function HomePage() {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="py-8 px-4 text-center"
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+                whileHover={{ y: -5 }}
+                className="py-8 px-4 text-center cursor-pointer group"
               >
-                <feature.icon className="w-8 h-8 mx-auto mb-3 text-gold" />
+                <motion.div
+                  whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <feature.icon className="w-8 h-8 mx-auto mb-3 text-gold group-hover:text-gold-dark transition-colors" />
+                </motion.div>
                 <h4 className="font-semibold text-sm uppercase tracking-wider mb-1">
                   {feature.title}
                 </h4>
@@ -121,24 +127,43 @@ export default function HomePage() {
       </section>
 
       {/* Featured Categories */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="text-sm text-gold uppercase tracking-[0.2em] mb-4 block">
+            <motion.span 
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-sm text-gold uppercase tracking-[0.2em] mb-4 block"
+            >
               Explore
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display mb-4">
+            </motion.span>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-4xl md:text-5xl font-display mb-4"
+            >
               Shop by Category
-            </h2>
-            <p className="text-gray max-w-xl mx-auto">
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-gray max-w-xl mx-auto"
+            >
               Discover our carefully curated collections, each piece selected
               for its exceptional quality and timeless design.
-            </p>
+            </motion.p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
@@ -289,28 +314,74 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-20 lg:py-28 bg-luxe-black">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 lg:py-28 bg-luxe-black overflow-hidden relative">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-96 h-96 bg-gold/5 rounded-full blur-3xl"
+              style={{
+                left: `${i * 40}%`,
+                top: `${i * 20 - 20}%`,
+              }}
+              animate={{
+                x: [0, 30, 0],
+                y: [0, -30, 0],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 8 + i * 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+        
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-display text-white mb-6">
+            <motion.h2 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, type: "spring" }}
+              className="text-4xl md:text-5xl font-display text-white mb-6"
+            >
               Join the LUXE Experience
-            </h2>
-            <p className="text-lg text-white/70 mb-10">
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-lg text-white/70 mb-10"
+            >
               Be the first to discover new collections, exclusive offers, and
               curated style inspiration delivered to your inbox.
-            </p>
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-gold text-luxe-black font-medium uppercase tracking-wider hover:bg-gold-light transition-colors"
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Start Shopping
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#8B6914] via-[#C9A050] to-[#8B6914] text-white font-medium uppercase tracking-wider hover:brightness-110 transition-all shadow-lg hover:shadow-gold/25"
+              >
+                Start Shopping
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

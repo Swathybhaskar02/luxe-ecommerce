@@ -26,8 +26,9 @@ export default function CategoryCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group"
     >
-      <Link href={href} className="group block relative overflow-hidden">
+      <Link href={href} className="block relative overflow-hidden">
         <div className="aspect-[4/5] relative">
           <Image
             src={image}
@@ -36,6 +37,18 @@ export default function CategoryCard({
             className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          
+          {/* Creeper gold border animation */}
+          <div className="absolute inset-2 pointer-events-none">
+            {/* Top border - creeps from left to right */}
+            <span className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#8B6914] via-[#C9A050] to-[#8B6914] transition-all duration-300 ease-out group-hover:w-full" />
+            {/* Right border - creeps from top to bottom */}
+            <span className="absolute top-0 right-0 w-[2px] h-0 bg-gradient-to-b from-[#8B6914] via-[#C9A050] to-[#8B6914] transition-all duration-300 ease-out delay-150 group-hover:h-full" />
+            {/* Bottom border - creeps from right to left */}
+            <span className="absolute bottom-0 right-0 h-[2px] w-0 bg-gradient-to-l from-[#8B6914] via-[#C9A050] to-[#8B6914] transition-all duration-300 ease-out delay-300 group-hover:w-full" />
+            {/* Left border - creeps from bottom to top */}
+            <span className="absolute bottom-0 left-0 w-[2px] h-0 bg-gradient-to-t from-[#8B6914] via-[#C9A050] to-[#8B6914] transition-all duration-300 ease-out delay-[450ms] group-hover:h-full" />
+          </div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 p-6">
