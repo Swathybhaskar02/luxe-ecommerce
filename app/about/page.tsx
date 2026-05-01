@@ -138,20 +138,13 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="relative max-h-[600px] lg:max-h-[700px] overflow-hidden rounded-lg">
+              <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
                 <Image
                   src="/images/about-us.png"
                   alt="LUXE craftsmanship"
-                  width={1890}
-                  height={3780}
-                  className="w-full h-auto object-cover object-top"
+                  fill
+                  className="object-contain"
                 />
-              </div>
-              <div className="absolute -bottom-8 -left-8 bg-gold p-8 hidden md:block">
-                <p className="text-4xl font-display text-luxe-black">14+</p>
-                <p className="text-sm text-luxe-black/80 uppercase tracking-wider">
-                  Years of Excellence
-                </p>
               </div>
             </motion.div>
           </div>
