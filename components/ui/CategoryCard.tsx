@@ -41,13 +41,13 @@ export default function CategoryCard({
           {/* Creeper gold border animation */}
           <div className="absolute inset-2 pointer-events-none">
             {/* Top border - creeps from left to right */}
-            <span className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#8B6914] via-[#C9A050] to-[#8B6914] transition-all duration-300 ease-out group-hover:w-full" />
+            <span className="absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-gold-dark via-gold-light to-gold-dark transition-all duration-300 ease-out group-hover:w-full" />
             {/* Right border - creeps from top to bottom */}
-            <span className="absolute top-0 right-0 w-[2px] h-0 bg-gradient-to-b from-[#8B6914] via-[#C9A050] to-[#8B6914] transition-all duration-300 ease-out delay-150 group-hover:h-full" />
+            <span className="absolute top-0 right-0 w-[2px] h-0 bg-gradient-to-b from-gold-dark via-gold-light to-gold-dark transition-all duration-300 ease-out delay-150 group-hover:h-full" />
             {/* Bottom border - creeps from right to left */}
-            <span className="absolute bottom-0 right-0 h-[2px] w-0 bg-gradient-to-l from-[#8B6914] via-[#C9A050] to-[#8B6914] transition-all duration-300 ease-out delay-300 group-hover:w-full" />
+            <span className="absolute bottom-0 right-0 h-[2px] w-0 bg-gradient-to-l from-gold-dark via-gold-light to-gold-dark transition-all duration-300 ease-out delay-300 group-hover:w-full" />
             {/* Left border - creeps from bottom to top */}
-            <span className="absolute bottom-0 left-0 w-[2px] h-0 bg-gradient-to-t from-[#8B6914] via-[#C9A050] to-[#8B6914] transition-all duration-300 ease-out delay-[450ms] group-hover:h-full" />
+            <span className="absolute bottom-0 left-0 w-[2px] h-0 bg-gradient-to-t from-gold-dark via-gold-light to-gold-dark transition-all duration-300 ease-out delay-[450ms] group-hover:h-full" />
           </div>
         </div>
 

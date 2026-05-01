@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Truck, Shield, RotateCcw, Headphones } from "lucide-react";
+import { useRef } from "react";
 import HeroBanner from "@/components/ui/HeroBanner";
 import CategoryCard from "@/components/ui/CategoryCard";
 import ProductCard from "@/components/products/ProductCard";
@@ -86,6 +87,74 @@ const features = [
     description: "Dedicated assistance",
   },
 ];
+
+function PhilosophySection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+
+  return (
+    <section ref={sectionRef} className="relative py-32 lg:py-40 overflow-hidden">
+      {/* Desktop background with Parallax */}
+      <motion.div
+        className="absolute inset-0 hidden sm:block"
+        style={{ y: backgroundY }}
+      >
+        <div
+          className="absolute inset-[-20%] bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/banners/banner-2.png')" }}
+        />
+        <div className="absolute inset-0 bg-luxe-black/60" />
+      </motion.div>
+      
+      {/* Mobile portrait background with Parallax */}
+      <motion.div
+        className="absolute inset-0 block sm:hidden"
+        style={{ y: backgroundY }}
+      >
+        <div
+          className="absolute inset-[-20%] bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/banners/section-mobile.png')" }}
+        />
+        <div className="absolute inset-0 bg-luxe-black/60" />
+      </motion.div>
+
+      <div className="relative container mx-auto px-4 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl mx-auto"
+        >
+          <span className="text-gold text-sm uppercase tracking-[0.3em] mb-6 block">
+            Our Philosophy
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display text-[#FFF8E7] mb-6 sm:mb-8 leading-tight">
+            Crafted for Those Who Appreciate the Finer Things
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-[#E8DCC8] mb-8 sm:mb-10 max-w-2xl mx-auto">
+            Every piece in our collection tells a story of exceptional
+            craftsmanship, premium materials, and timeless design. We believe
+            in quality over quantity, creating pieces that become treasured
+            parts of your wardrobe.
+          </p>
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-3 px-8 py-4 border border-gold text-gold font-medium uppercase tracking-wider hover:bg-gold hover:text-luxe-black transition-colors rounded-lg"
+          >
+            Our Story
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 export default function HomePage() {
   const newArrivals = getNewArrivals();
@@ -211,53 +280,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Brand Story Banner */}
-      <section className="relative py-32 lg:py-40 overflow-hidden">
-        {/* Desktop background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center hidden sm:block"
-          style={{ backgroundImage: "url('/images/banners/banner-2.png')" }}
-        >
-          <div className="absolute inset-0 bg-luxe-black/60" />
-        </div>
-        {/* Mobile portrait background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center block sm:hidden"
-          style={{ backgroundImage: "url('/images/banners/section-mobile.png')" }}
-        >
-          <div className="absolute inset-0 bg-luxe-black/60" />
-        </div>
-
-        <div className="relative container mx-auto px-4 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto"
-          >
-            <span className="text-gold text-sm uppercase tracking-[0.3em] mb-6 block">
-              Our Philosophy
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display text-[#FFF8E7] mb-6 sm:mb-8 leading-tight">
-              Crafted for Those Who Appreciate the Finer Things
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-[#E8DCC8] mb-8 sm:mb-10 max-w-2xl mx-auto">
-              Every piece in our collection tells a story of exceptional
-              craftsmanship, premium materials, and timeless design. We believe
-              in quality over quantity, creating pieces that become treasured
-              parts of your wardrobe.
-            </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-[#C9A050] text-[#C9A050] font-medium uppercase tracking-wider hover:bg-[#C9A050] hover:text-luxe-black transition-colors rounded-lg"
-            >
-              Our Story
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      {/* Brand Story Banner with Parallax */}
+      <PhilosophySection />
 
       {/* Best Sellers */}
       <section className="py-20 lg:py-28">
@@ -321,75 +345,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="py-20 lg:py-28 bg-luxe-black overflow-hidden relative">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-96 h-96 bg-gold/5 rounded-full blur-3xl"
-              style={{
-                left: `${i * 40}%`,
-                top: `${i * 20 - 20}%`,
-              }}
-              animate={{
-                x: [0, 30, 0],
-                y: [0, -30, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 8 + i * 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
+      {/* CTA Banner - Combined with Newsletter */}
+      <section className="py-12 lg:py-16 bg-luxe-black overflow-hidden relative">
         
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
+            transition={{ duration: 0.5 }}
+            className="max-w-2xl mx-auto text-center"
           >
-            <motion.h2 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, type: "spring" }}
-              className="text-4xl md:text-5xl font-display text-white mb-6"
-            >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display text-white mb-3">
               Join the LUXE Experience
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="text-lg text-white/70 mb-10"
-            >
-              Be the first to discover new collections, exclusive offers, and
-              curated style inspiration delivered to your inbox.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#8B6914] via-[#C9A050] to-[#8B6914] text-white font-medium uppercase tracking-wider hover:brightness-110 transition-all shadow-lg hover:shadow-gold/25"
-              >
-                Start Shopping
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </motion.div>
+            </h2>
+            <p className="text-sm sm:text-base text-white/60 mb-6">
+              Subscribe for exclusive offers and new collection updates.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/50 rounded-full focus:outline-none focus:border-gold text-sm"
+              />
+              <button className="px-6 py-3 bg-gradient-to-r from-gold-dark via-gold-light to-gold-dark text-luxe-black font-medium uppercase tracking-wider text-xs sm:text-sm hover:brightness-110 transition-all rounded-full">
+                Subscribe
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>

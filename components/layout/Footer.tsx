@@ -1,15 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   Mail,
   MapPin,
   Phone,
-  ArrowRight,
-  Globe,
 } from "lucide-react";
-import { useState } from "react";
 
 const footerLinks = {
   shop: [
@@ -45,65 +41,10 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail("");
-      setTimeout(() => setSubscribed(false), 3000);
-    }
-  };
-
   return (
     <footer className="bg-luxe-black text-luxe-white">
-      {/* Newsletter Section */}
-      <div className="border-b border-gray-dark">
-        <div className="container mx-auto px-4 lg:px-8 py-16">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-3xl font-display mb-4">Join the LUXE Circle</h3>
-            <p className="text-gray mb-8">
-              Subscribe to receive exclusive offers, early access to new
-              collections, and style inspiration.
-            </p>
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
-              <div className="flex-1 relative">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="w-full px-6 py-4 bg-transparent border border-gray-dark text-white placeholder-gray focus:border-gold focus:outline-none transition-colors"
-                  required
-                />
-              </div>
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 bg-gold text-luxe-black font-medium uppercase tracking-wider hover:bg-gold-light transition-colors flex items-center justify-center gap-2"
-              >
-                Subscribe
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
-            </form>
-            {subscribed && (
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-4 text-gold"
-              >
-                Thank you for subscribing!
-              </motion.p>
-            )}
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
-      <div className="container mx-auto px-4 lg:px-8 py-16">
+      <div className="container mx-auto px-4 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
