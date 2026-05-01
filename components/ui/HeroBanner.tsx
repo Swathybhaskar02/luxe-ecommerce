@@ -8,23 +8,34 @@ import { ArrowRight } from "lucide-react";
 export default function HeroBanner() {
   return (
     <section className="relative w-full h-[70vh] min-h-[500px] max-h-[800px] bg-cream overflow-hidden">
-      {/* Background Image with zoom animation */}
+      {/* Background Image with zoom animation - PNG for desktop, JPG for mobile */}
       <motion.div 
         className="absolute inset-0"
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
+        {/* Desktop image (PNG) */}
         <Image
           src="/images/banners/banner-1.png"
           alt="LUXE Hero"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center hidden sm:block"
           sizes="100vw"
           quality={85}
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMiMUFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAZEQACAwEAAAAAAAAAAAAAAAABAgADESH/2gAMAwEAAhEDEEA/AJNtqGoW9vFFFeSJHGgRFBPAAx/aqe2t13txaW8s2oSSSvEjO7E5ZioyT+0pSqZTkidmoj/Z/9k="
+        />
+        {/* Mobile image (JPG - lighter, faster loading) */}
+        <Image
+          src="/images/banners/banner-1.jpg"
+          alt="LUXE Hero"
+          fill
+          priority
+          className="object-cover object-center block sm:hidden"
+          sizes="100vw"
+          quality={80}
         />
       </motion.div>
 
