@@ -138,13 +138,13 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="relative">
+              <div className="relative max-h-[600px] lg:max-h-[700px] overflow-hidden rounded-lg">
                 <Image
                   src="/images/about-us.png"
                   alt="LUXE craftsmanship"
                   width={1890}
                   height={3780}
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-cover object-top"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 bg-gold p-8 hidden md:block">

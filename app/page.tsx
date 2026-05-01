@@ -239,10 +239,10 @@ export default function HomePage() {
             <span className="text-gold text-sm uppercase tracking-[0.3em] mb-6 block">
               Our Philosophy
             </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-[#FFF8E7] mb-8 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display text-[#FFF8E7] mb-6 sm:mb-8 leading-tight">
               Crafted for Those Who Appreciate the Finer Things
             </h2>
-            <p className="text-lg text-[#E8DCC8] mb-10">
+            <p className="text-sm sm:text-base md:text-lg text-[#E8DCC8] mb-8 sm:mb-10 max-w-2xl mx-auto">
               Every piece in our collection tells a story of exceptional
               craftsmanship, premium materials, and timeless design. We believe
               in quality over quantity, creating pieces that become treasured
