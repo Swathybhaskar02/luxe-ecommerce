@@ -20,9 +20,9 @@ export default function HeroBanner() {
           alt="LUXE Hero"
           fill
           priority
+          unoptimized
           className="object-cover object-center"
           sizes="100vw"
-          quality={100}
         />
       </motion.div>
 
