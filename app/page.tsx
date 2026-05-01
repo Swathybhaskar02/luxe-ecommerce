@@ -213,9 +213,17 @@ export default function HomePage() {
 
       {/* Brand Story Banner */}
       <section className="relative py-32 lg:py-40 overflow-hidden">
+        {/* Desktop background */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center hidden sm:block"
           style={{ backgroundImage: "url('/images/banners/banner-2.png')" }}
+        >
+          <div className="absolute inset-0 bg-luxe-black/60" />
+        </div>
+        {/* Mobile portrait background */}
+        <div
+          className="absolute inset-0 bg-cover bg-center block sm:hidden"
+          style={{ backgroundImage: "url('/images/banners/section-mobile.png')" }}
         >
           <div className="absolute inset-0 bg-luxe-black/60" />
         </div>
